@@ -1,0 +1,80 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag("images.jpg", alt: "logo"), '/', class: 'navbar-brand' %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="<%= 'active' if controller_name == 'home' %>">
+          <a href="<%= home_path %>">
+            <i class="fa fa-th-large"></i> Home
+          </a>
+        </li>
+        <% if current_user.student? %>
+          <li class="<%= 'active' if controller_name == 'students' %>">
+            <a href="<%= students_path %>">
+              Student
+            </a>
+          </li>
+        <% end %>
+        <li class="<%= 'active' if controller_name == 'trades' %>">
+          <a href="<%= trades_path %>">
+          Trades
+          </a>
+        </li>
+        <% if current_user.faculty? %>
+          <li class="<%= 'active' if controller_name == 'faculties' %>">
+            <a href="<%= faculties_path %>">
+              Faculties
+            </a>
+          </li>
+        <% end %>
+        <li class="<%= 'active' if controller_name == 'trade_fees' %>">
+          <a href="<%= trade_fees_path %>">
+            Fess Structure
+          </a>
+        </li>
+        <% if current_user.faculty? %>
+          <li class="<%= 'active' if controller_name == 'User' %>">
+            <a href="<%= users_path %>">
+              User
+            </a>
+          </li>
+          <li class="<%= 'active' if controller_name == 'upload_fee_structures' %>">
+            <a href="<%= upload_fee_structures_path %>">
+              Uploads
+            </a>
+          </li>
+        <% end %>
+        <li class="<%= 'active' if controller_name == 'collage_images' %>">
+          <a href="<%= collage_images_path %>">
+            Collage Images
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
+            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-user">
+            <li>
+              <i class="fa fa-user fa-fw"></i> 
+              <%= current_user.email %>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a href="<%= destroy_user_session_path %>" data-method="delete">
+              <i class="fa fa-sign-out"></i> Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-9">
+    <h1>Applied for Admission</h1>
+  </div>
+  <% if current_user.is_admin? %>
+    <div class="row">
+    <div class="col-md-10"></div>
+    <div class="col-md-2 text-right">
+      <%= form_tag apply_admissions_path, method: "get" do |f| %>
+        <div class="input-group">
+          <input type="text" name="search" class="form-control search" placeholder="Search for..." value="<%= @search %>" autocomplete="on">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Ok</button>
+          </span>
+        </div>
+      <% end %>
+    </div> 
+  <% end %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Gender</th>
+      <th>Email</th>
+      <th>Contact number</th>
+      <th>Address</th>
+      <th>Trade</th>
+      <th>Percentage</th>
+      <th>Date of birth</th>
+      <th>Passing year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @apply_admissions.each do |apply_admission| %>
+      <tr>
+        <td><%= apply_admission.first_name %></td>
+        <td><%= apply_admission.last_name %></td>
+        <td><%= apply_admission.gender %></td>
+        <td><%= apply_admission.email %></td>
+        <td><%= apply_admission.contact_number %></td>
+        <td><%= apply_admission.address %></td>
+        <td><%= apply_admission.try(:trade).try(:name) %></td>
+        <td><%= apply_admission.percentage %></td>
+        <td><%= apply_admission.date_of_birth %></td>
+        <td><%= apply_admission.passing_year %></td>
+        <td class="text-right">
+          <%= link_to 'Show', apply_admission, class: "btn btn-info btn-xs" %>
+          <%= link_to 'Edit', edit_apply_admission_path(apply_admission), class: "btn btn-warning btn-xs" %>
+          <%= link_to 'Destroy', apply_admission, class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-right">
+  <%= paginate @apply_admissions %>
+</div>

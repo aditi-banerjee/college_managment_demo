@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Trade fees:</strong>
+  <%= @registration.trade_fees %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @registration.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @registration.email %>
+</p>
+
+<p>
+  <strong>Phone no:</strong>
+  <%= @registration.phone_no %>
+</p>
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

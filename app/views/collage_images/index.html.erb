@@ -1,0 +1,12 @@
+<h1>Collage Images</h1>
+<% if current_user.admin? %>
+  <%= form_for(CollageImage.new, html: { multipart: true, class: "dropzone"}) do |f|  %>
+    <div class="fallback">
+      <%= f.file_field :image %><br>
+      <%= f.submit "Upload Collage Photos" %>
+    </div>
+  <% end %>
+<% end %>
+<div class="index">
+  <%= render "index" %>
+</div>

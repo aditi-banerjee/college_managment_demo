@@ -1,0 +1,24 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Fees</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Student Details</h4>
+    <dl class="dl-horizontal" >
+      <dt>Duration:</dt>        <dd><%= @fee.duration %></dd>
+      <dt>Amount:</dt>         <dd><%= @fee.amount %></dd>
+    </dl>
+  </div>
+  <% if current_user.admin? %>
+    <div class="col-md-6 text-right">
+      <%= link_to 'Edit', edit_fee_path(@fee) , class: "btn btn-warning btn-sm"%>
+    </div>
+  <% end %>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

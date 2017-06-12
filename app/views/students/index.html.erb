@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-10">
+    <h1>Students</h1>
+  </div>
+  <% if current_user.admin? %>
+    <div class="col-md-2">
+      <h1>
+        <%= link_to 'New Student', new_student_path,  class: "btn btn-default btn-md" %>
+      </h1>
+  </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="col-md-10"></div>
+  <div class="col-md-2 text-right">
+    <%= form_tag students_path, method: "get" do |f| %>
+        <div class="input-group">
+          <%= hidden_field_tag 'student', @search, class: "form-control", id: "hfield", name: 'search' %>
+          <input type="text" name="search" class="form-control search typeahead" placeholder="Search for..." value="<%= @search %>" autocomplete="off" id= "student" data-url="/autocomplete/students"data-type="students" data-id="hfield">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Ok</button>
+          </span>
+        </div>
+      <% end %>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Date of birth</th>
+      <th>Date of admission</th>
+      <th>Gender</th>
+      <th>Trade</th>
+      <th>Address</th>
+      <th>City</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.first_name %></td>
+        <td><%= student.last_name %></td>
+        <td><%= student.date_of_birth %></td>
+        <td><%= student.date_of_admission %></td>
+        <td><%= student.gender %></td>
+        <td><%= student.try(:trade).try(:name) %></td>
+        <td><%= student.address %></td>
+        <td><%= student.city%></td>
+        <td><%= link_to 'Fees Payment', new_charge_path %></td>
+        <td class="text-right">
+          <%= link_to 'Show', student, class: "btn btn-info btn-xs" %>
+          <%= link_to 'Edit', edit_student_path(student), class: "btn btn-warning btn-xs" %>
+          <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-right">
+  <%= paginate @students %>
+</div>
+<script type="text/javascript">
+// $(document).ready(function(){
+//     $('#student.typehead').typeahead({
+//       name: 'search',
+//       local: ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen']
+//     });
+// });
+// Autocomplete
+    var student = $('#student.typeahead');
+    
+    student.typeahead([{
+      name: 'student',
+      valueKey: 'first_name',
+      remote: '/auto_complete/students?search=%QUERY',
+      limit: 10
+    }]).on('typeahead:selected', onSelected).on('typeahead:opened', onOpened);
+    function onSelected($e, datum) {
+      var hfield = document.getElementById($(this).attr("data-id"));
+      hfield.value = datum.id;
+      console.log(datum.id)
+    }
+    function onOpened($e) {
+      console.log('opened');
+    }
+</script>

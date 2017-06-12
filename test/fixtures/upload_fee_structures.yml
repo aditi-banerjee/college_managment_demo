@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  upload: 
+  user_id: 1
+  status: MyString
+  number_of_success: 1
+  number_of_fail: 1
+  total_record: 1
+  fail_error: MyString
+
+two:
+  upload: 
+  user_id: 1
+  status: MyString
+  number_of_success: 1
+  number_of_fail: 1
+  total_record: 1
+  fail_error: MyString

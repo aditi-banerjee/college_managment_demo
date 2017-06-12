@@ -1,0 +1,266 @@
+<%= form_for(@apply_admission , html: { class: "form-horizontal form-label-left"}) do |f| %>
+  <h4>Apply for Admission</h4>
+  <span class="clearfix"></span>
+  <div class="ln_solid"></div>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :email %>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      First Name:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12" id="f_name">
+      <%= f.text_field :first_name, placeholder: 'First Name', required: :required, class: 'form-control col-md-7 col-xs-12' %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Last Name:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :last_name, placeholder: 'Last Name', required: :required , class: 'form-control col-md-7 col-xs-12' %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Gender:
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="radio">
+        <label>
+          <%= f.radio_button :gender, 'M', class: 'flat' %> Male
+        </label>
+        <label>
+          <%= f.radio_button :gender, 'F', class: 'flat' %> Female
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <div>
+      <label class="control-label col-md-2 col-sm-2 col-xs-12">
+        Select Image:
+      </label>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.file_field :image, onchange: "displayImage(this);", data: {max_file_size: 1.megabytes}, id: "img" %>
+      </div>
+    </div>
+    <% unless apply_admission.image.blank? %>
+    <div class="image_preview form-group">
+        <%= image_tag apply_admission.image.url(:medium) %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="form-group text-left">
+    <div>
+      <label class="control-label col-md-2 col-sm-2 col-xs-12">
+        Upload Result:
+      </label>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <%= f.file_field :result,class: "validate", data: {max_file_size: 5.megabytes} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <div>
+      <label class="control-label col-md-2 col-sm-2 col-xs-12">
+        Upload Certificate:
+      </label>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <%= f.file_field :student_certificate,class: "validate", data: {max_file_size: 5.megabytes} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Trade
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12 dropdown" >
+    <%= f.select :trade_id , select_trade_data , {prompt: "---Select Trade---"}, required: :required , class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Address:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :address, placeholder: 'Address', required: :required, class: 'form-control col-md-7 col-xs-12', id:"realadd" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Confirm Address:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :address, placeholder: 'Confirm your Address', required: :required, class: 'form-control col-md-7 col-xs-12', id:"confadd" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Mobile:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :contact_number, placeholder: 'Mobile Number', required: :required, class: 'form-control col-md-7 col-xs-12', id:"mobile" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Confirm Mobile:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :contact_number, placeholder: 'Mobile Number', required: :required, class: 'form-control col-md-7 col-xs-12', id:"confimmob" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Percentage:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :percentage, placeholder: 'Percentage', required: :required, class: 'form-control col-md-7 col-xs-12', id: "apply_image" %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+    Date of Birth:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12  input-group date">
+      <%= f.text_field :date_of_birth, class: "form-control", required: :required, placeholder: "YYYY/MM/DD" %>
+      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+    Passing Year:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12  input-group date">
+      <%= f.text_field :passing_year, class: "form-control", required: :required, placeholder: "YYYY/MM/DD" %>
+      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    </div>
+  </div>
+
+  <span class="clearfix"></span>
+
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
+      <a href="<%= apply_admissions_path %>" class="btn btn-warning", type="button">Cancel</a>
+      <button class="btn btn-primary" type="submit" data-disable-with="Applying..." id="submit">Apply</button>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $('.input-group.date').datepicker({
+    todayBtn: "linked",
+    format: 'yyyy-mm-dd',
+    keyboardNavigation: false,
+    forceParse: false,
+    autoclose: true
+  });
+
+  //  function changetext(){
+  //   a = document.getElementById('name')
+  //   console.log(a.value);
+  //   b = document.getElementById('confirm_name')
+  //   b.value = a.value;
+    
+  // }
+
+  function displayImage(image) {
+    console.log("inside image display")
+    $(".image_preview").html('<%= escape_javascript(image_tag @apply_admission.image.url(:medium)) %>');
+    console.log(image.files[0].size);
+    var maxFileSize = $(inputFile).data('max-file-size');
+  }
+
+  $(".validate").on("change", function(){
+    var maxExceededMessage = "This file exceeds the maximum allowed file size (5 MB)";
+    var extErrorMessage = "Only file with extension: .pdf, .msword, .doc, .docx, .jpg, .jpeg, .gif, .png are allowed";
+    var allowedExtension = ["pdf", "msword","doc", "docx","jpg" ,"jpeg", "gif", "png"];
+
+    var extName;
+    var maxFileSize = $(this).data('max-file-size');
+    var sizeExceeded = false;
+    var extError = false;
+
+    $.each(this.files, function() {
+      if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {sizeExceeded=true;
+      };
+      extName = this.name.split('.').pop();
+      if ($.inArray(extName, allowedExtension) == -1) {
+        extError=true;
+      };
+    });
+    if (sizeExceeded) {
+      window.alert(maxExceededMessage);
+      $(this).val('');
+    };
+
+    if (extError) {
+      window.alert(extErrorMessage);
+      $(this).val('');
+    };
+  });
+
+  $("#img").on("change", function(){
+    var exceedError = "The size for the file exceeds please upload File with maximum size of 1(MB)";
+    var extensionError = "Opps the extension for file is not proper it must be jpg,gif,jpeg,png";
+    var allowedExtension = ["jpg", "jpeg", "gif", "png"];
+
+    var maxSize = $(this).data("max-file-size");
+    var fileExtention;
+    var sizeExceeded = false;
+    var extention = false;
+
+    $.each(this.files, function(){
+      if(this.size > parseInt(maxSize)){
+        sizeExceeded = true;
+      };
+      fileExtention = this.name.split('.').pop();
+      if($.inArray(fileExtention,allowedExtension) == -1){
+        extention = true;
+      };
+    });
+
+    if (sizeExceeded){
+      alert(exceedError);
+      $(this).val('');
+    };
+
+    if (extention){
+      alert(extensionError);
+      $(this).val('');
+    };
+  });
+
+  $("#confadd").on("change", function(){
+    address = document.getElementById('realadd')
+    confirmadd = document.getElementById('confadd')
+    if( address.value != confirmadd.value ){
+      alert("opps the value is different. Please enter same name");
+      $(this).val('');
+    }
+  });
+
+  $("#confimmob").on("change", function(){
+    mob = document.getElementById('mobile')
+    confimmob = document.getElementById('confimmob')
+    if( mob.value != confimmob.value ){
+      alert("opps the value is different. Please enter same name");
+      $(this).val('');
+    }
+  });
+</script>

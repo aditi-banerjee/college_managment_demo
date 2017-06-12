@@ -1,0 +1,52 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Apply for Job</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Candidate details</h4>
+    <dl class="dl-horizontal" >
+      <dt>First Name:</dt>        <dd><%= @apply_job.first_name %></dd>
+      <dt>Last Name:</dt>         <dd><%= @apply_job.last_name %></dd>
+      <dt>Gender:</dt>            <dd><%= @apply_job.gender %></dd>
+      <dt>Trade:</dt>             <dd><%= @apply_job.try(:trade).try(:name)%></dd>
+      <dt>Address:</dt>           <dd><%= @apply_job.address %></dd>
+      <dt>Email:</dt>             <dd><%= @apply_job.email %></dd>
+      <dt>Contact Number:</dt>    <dd><%= @apply_job.contact_number%></dd>
+      <dt>Qualification:</dt>     <dd><%= @apply_job.qualification %></dd>
+      <dt>Percentage:</dt>        <dd><%= @apply_job.percentage %></dd>
+      <dt>Date Of Birth:</dt>     <dd><%= @apply_job.date_of_birth %></dd>
+      <dt>Passing date:</dt>      <dd><%= @apply_job.passing_year %></dd>
+      <dt>Resume:</dt>            <dd><%= link_to "Download", @apply_job.document.url(:original, false) %></dd>
+      <% @apply_job.job_certificates.each do |job_certificate|%>
+      <dt>Title:</dt>             <dd><%= job_certificate.try(:title)%></dd>
+      <dt>Certificates:</dt>      <dd><%= link_to "Download Certificate", job_certificate.certificate.url(:original, false) %></dd>
+      <% end %>
+      <dt>Approve:</dt>
+      <dd>
+        <% if @apply_job.approve_by.nil? && @apply_job.rejected_by.nil? %>
+          <%= "Decision pending"%>
+        <% else %>
+        <%= @apply_job.approve ? 'Approved': 'Rejected' %>
+        <% end %>
+        <% if current_user.admin? %>
+          <% if @apply_job.approve == true %>
+            <%= link_to 'Reject', apply_job_reject_application_path(@apply_job), method: :put, class: "btn btn-danger btn-xs" %>
+          <% else %>
+            <%= link_to 'Approve', apply_job_approved_path(@apply_job),method: :put, class: "btn btn-info btn-xs" %>
+          <% end %>
+        <% end %>
+      </dd>
+      <dt>Send Mail:</dt><dd><%= link_to "Send confirmation by email",  apply_job_confirmation_path(@apply_job) %></dd>
+    </dl>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to 'Edit', edit_apply_job_path(@apply_job) , class: "btn btn-warning btn-sm"%>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

@@ -1,0 +1,25 @@
+<% @collage_images.each do |collage_image| %>
+  <div class="img-thumbnail">
+    <%= image_tag collage_image.image.url(:thumb), alt: collage_image.image.url(:thumb), data: {toggle: "modal",target: "#myModal-#{collage_image.id}" , id: collage_image.id } %>
+  </div>
+  <!-- Modal plugin to open a window on current window -->
+  <div class="modal fade" id="myModal-<%= collage_image.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span style="color:#fff" aria-hidden="true">&times;</span>
+        </div>
+        <div class="modal-body">
+          <%= image_tag collage_image.image.url %>
+        </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+<% end %>
+<script type="text/javascript">
+  $('.modal').on('show.bs.modal', function () {
+       $(this).find('.modal-body').css({
+              width:'auto', //probably not needed
+              height:'auto', //probably not needed 
+              'max-height':'100%'
+       });
+});
+</script>

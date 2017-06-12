@@ -1,0 +1,26 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Faculty</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Faculty Details</h4>
+    <dl class="dl-horizontal" >
+      <dt>First Name:</dt>        <dd><%= @faculty.first_name %></dd>
+      <dt>Last Name:</dt>         <dd><%= @faculty.last_name %></dd>
+      <dt>Trade:</dt>             <dd><%= @faculty.try(:trade).try(:name)%></dd>
+      <dt>Address:</dt>           <dd><%= @faculty.address %></dd>
+      <dt>Date Of Birth</dt>      <dd><%= @faculty.date_of_birth %></dd>
+      <dt>Date Of Join</dt>       <dd><%= @faculty.date_of_join %></dd>
+    </dl>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to 'Edit', edit_faculty_path(@faculty) , class: "btn btn-warning btn-sm"%>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

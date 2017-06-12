@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  date_of_birth: 2016-10-07
+  date_of_join: 2016-10-07
+  trade: 1
+  address: MyString
+  salary: 9.99
+
+two:
+  first_name: MyString
+  last_name: MyString
+  date_of_birth: 2016-10-07
+  date_of_join: 2016-10-07
+  trade: 1
+  address: MyString
+  salary: 9.99

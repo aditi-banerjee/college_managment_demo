@@ -1,0 +1,262 @@
+<%= t('hello') %>
+<% if current_user.admin? %>
+  <div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa-graduation-cap index"></i>
+      </div>
+      <div class="panel-footer">
+         <%= link_to "Students", students_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa-street-view index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Faculties", faculties_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-default ">
+      <div class="panel-body">
+        <i class="fa fa-institution index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Trades", trades_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa fa-calendar-o index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Fees Durations", fees_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa-inr index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Fees Structure", trade_fees_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa-users index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Student's Faculties", student_faculties_path %>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-user index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Users", users_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<% elsif current_user.user? %>
+  <p>
+    Your role is yet to be decide.
+  </p>
+  <div class="row">
+  <% unless ApplyJob.exists?(user_id: current_user.id) %>
+    <div class="col-md-3 applydlink">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Apply  for admission form here
+        </div>
+        <div class="panel-footer">
+          <% if ApplyAdmission.exists?(user_id: current_user.id)%>
+            <%= link_to "Applied details", apply_admissions_path, class: "applyadlink" %>
+          <% else %>
+            <%= link_to "Apply for Admission", new_apply_admission_path, class: "applyadlink" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% unless ApplyAdmission.exists?(user_id: current_user.id) %>
+    <div class="col-md-3 applyjlink">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Apply for job form here
+        </div>
+        <div class="panel-footer">
+          <% if ApplyJob.exists?(user_id: current_user.id)%>
+            <%= link_to "Applied details", apply_jobs_path, class: "applyjoblink" %>
+          <% else %>
+            <%= link_to "Apply for Job", new_apply_job_path, class: "applyjoblink" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% elsif current_user.student? %>
+  <p>
+    <h3>
+      Welcome dear Student
+    </h3>
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-graduation-cap index"></i>
+        </div>
+        <div class="panel-footer">
+           <%= link_to "Students", students_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default ">
+        <div class="panel-body">
+          <i class="fa fa-institution index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Trades", trades_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa fa-calendar-o index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Fees Durations", fees_path %>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa-inr index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Fees Structure", trade_fees_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <i class="fa fa-users index"></i>
+      </div>
+      <div class="panel-footer">
+        <%= link_to "Student's Faculties", student_faculties_path %>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+  <p>
+    <h3>
+      Welcome Respected Faculty
+    </h3>
+  </p>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-street-view index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Faculties", faculties_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-users index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Student's Faculties", student_faculties_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default ">
+        <div class="panel-body">
+          <i class="fa fa-institution index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Trades", trades_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa fa-calendar-o index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Fees Durations", fees_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-inr index"></i>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "Fees Structure", trade_fees_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!-- <h1>Google Maps</h1>
+  <div id="map-container">
+    <div id="map-canvas"></div>
+  </div> -->
+
+<script type="text/javascript">
+  $('.applyjoblink').on('click', function(){
+    $(".applydlink").hide();
+  });
+
+  $('.applyadlink').on('click', function(){
+    $(".applyjlink").hide();
+  });
+</script>

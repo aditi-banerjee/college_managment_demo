@@ -1,0 +1,252 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/fonts/glyphicons-halflings-regular.eot');
+  src: url('/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.navbar-brand>img {
+  height: 100%;
+  width: 30px;
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  height: auto;
+  background-color: #f1f1f1;
+  min-height: 1095px;
+  overflow: auto;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;}
+}
+
+.ln_solid {
+  border-top: 1px solid #e5e5e5;
+  color: #ffffff;
+  background-color: #ffffff;
+  height: 1px;
+  margin: 20px 0;
+}
+
+// login page
+/*@font-face {
+font-family: 'Montserrat-Regular';
+src: url('/assets/fonts/Montserrat-Regular.ttf') format("truetype");
+}*/
+
+.container {
+  padding: 3% 0 0 0 !important;
+  margin: auto;
+}
+
+.form {
+  margin-top: 5% !important;
+  position: relative;
+  z-index: 1;
+  background: #eeeeee;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
+}
+
+.form input {
+  outline: 0;
+  background: #ffffff;
+  width: 93%;
+  border: 0;
+  margin: 10px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.form select {
+  outline: 0;
+  background: #ffffff;
+  width: 93%;
+  border: 0;
+  margin: 10px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.form button a {
+  color: #fff;
+}
+
+.form button a:hover {
+  color: #fff;
+}
+
+.form button a:active {
+  color: #fff;
+}
+
+.form h2{
+  font-variant: small-caps;
+  color: #337ab7;
+}
+
+.form button {
+  font-variant: small-caps;
+  /*text-transform: uppercase;*/
+  outline: 0;
+  background: #337ab7;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 18px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+/*.form link:hover,.form link size and all property*/
+.form a{
+  color: #337ab7;
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.form a:hover{
+  font-size: 16.5px;
+}
+
+/*.form button:hover,.form button:active,.form button:focus {
+  background: ;
+}
+*/
+.form .message {
+  margin: 8px 0 0 !important;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.form .message-forget-pass {
+  margin: -10px 0px 7px 0px !important;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message-forget-pass a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.login-right-text {
+  text-transform: uppercase;
+  color: #5a6878;
+  margin-top: 20% !important;
+  float: right; 
+  text-align: center;
+  font-size: 80px;
+  text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+
+@media (max-width: 1200px) {
+  .login-right-text {
+   margin-top: 10% !important;
+   float: none !important;
+   font-size: 50px;
+  }
+
+.form {
+  margin-top: 0% !important;
+  }
+}
+
+.alert1 {
+  color: red;
+}
+.alertnotice {
+  color: green;
+}
+
+.panel {
+  margin: 40px;
+  background-color: #fff;
+  border: 1px solid powderblue;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.panel-body {
+    padding: 15px;
+    height: 150px;
+    text-align: center;
+}
+
+.index {
+  font-size: 90px;
+  /*margin: 15%;*/
+}
+
+.links {
+  margin-top: 10px;
+}
+
+.user{
+    color: #fcf8e3;
+    text-decoration: none;
+}
+
+.addcerti{
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+  margin-left: 50px;
+}
+
+.foot {
+  margin-right: auto;
+  margin-left: auto;
+}
+.modal-body {
+  position: relative;
+  vertical-align: middle;
+  overflow-y: auto;
+  max-height: 400px;
+  padding: 15px;
+}
+
+.search{
+  border-radius:20px 0px 0px 20px; 
+}

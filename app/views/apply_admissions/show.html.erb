@@ -1,0 +1,53 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Apply for Admission</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Candidate details</h4>
+    <dl class="dl-horizontal" >
+      <dt>Student PhotoId:</dt>    <dd><%= image_tag @apply_admission.image.url %></dd>
+      <dt>First Name:</dt>        <dd><%= @apply_admission.first_name %></dd>
+      <dt>Last Name:</dt>         <dd><%= @apply_admission.last_name %></dd>
+      <dt>Gender:</dt>            <dd><%= @apply_admission.gender %></dd>
+      <dt>Trade:</dt>             <dd><%= @apply_admission.try(:trade).try(:name)%></dd>
+      <dt>Address:</dt>           <dd><%= @apply_admission.address %></dd>
+      <dt>Email:</dt>             <dd><%= @apply_admission.email %></dd>
+      <dt>Contact Number:</dt>    <dd><%= @apply_admission.contact_number%></dd>
+      <dt>Percentage:</dt>        <dd><%= @apply_admission.percentage %></dd>
+      <dt>Date Of Birth:</dt>     <dd><%= @apply_admission.date_of_birth %></dd>
+      <dt>Passing date:</dt>      <dd><%= @apply_admission.passing_year %></dd>
+      <dt>Result:</dt>            <dd><%= link_to "Download Result", @apply_admission.result.url %></dd>
+      <dt>Certificate:</dt>       <dd><%= link_to "Download certificate", @apply_admission.student_certificate.url(:original, false) %></dd>
+      <dt>Approve:</dt>
+      <dd>
+        <% if @apply_admission.approve_by.nil? && @apply_admission.reject_by.nil? %>
+          <%= "Decision pending"%>
+        <% else %>
+        <%= @apply_admission.approve ? 'Approved': 'Rejected' %>
+        <% end %>
+        <% if current_user.admin? %>
+          <% if @apply_admission.approve == true %>
+            <%= link_to 'Reject', apply_admission_reject_application_path(@apply_admission), method: :put, class: "btn btn-danger btn-xs" %>
+          <% elsif @apply_admission.approve == false && @apply_admission.reject == false %>
+            <%= link_to 'Reject', apply_admission_reject_application_path(@apply_admission), method: :put, class: "btn btn-danger btn-xs" %>
+          <% else %>
+            <%= link_to 'Reject', apply_admission_reject_application_path(@apply_admission), method: :put, class: "btn btn-danger btn-xs" %>
+            <%= link_to 'Approve', apply_admission_approved_path(@apply_admission),method: :put, class: "btn btn-info btn-xs" %>
+          <% end %>
+        <% end %>
+      </dd>
+      <dt>Send Mail:</dt><dd><%= link_to "Send confirmation by email",  apply_admission_confirmation_path(@apply_admission) %></dd>
+    </dl>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to 'Edit', edit_apply_admission_path(@apply_admission) , class: "btn btn-warning btn-sm"%>
+    <%= link_to "Download PDF", { :action => "show", :format => :pdf }, class: 'button nice red large radius', target: '_blank'%>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

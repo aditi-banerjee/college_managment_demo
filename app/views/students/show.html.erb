@@ -1,0 +1,35 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Student</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Student Details</h4>
+    <dl class="dl-horizontal" >
+      <dt>Student PhotoId:</dt>   <dd><%= image_tag @student.image.url %></dd>
+      <dt>First Name:</dt>        <dd><%= @student.first_name %></dd>
+      <dt>Last Name:</dt>         <dd><%= @student.last_name %></dd>
+      <dt>Trade:</dt>             <dd><%= @student.try(:trade).try(:name)%></dd>
+      <dt>Address:</dt>           <dd><%= @student.address %></dd>
+      <dt>City:</dt>              <dd><%= @student.city%></dd>
+      <dt>Mobile No:</dt>         <dd><%= @student.mobile_no %></dd>
+      <dt>Date Of Birth</dt>      <dd><%= @student.date_of_birth %></dd>
+      <dt>Date Of Join</dt>       <dd><%= @student.date_of_admission %></dd>
+    </dl>
+  </div>
+  <div class="col-md-6 text-right">
+    <%= link_to 'Edit', edit_student_path(@student) , class: "btn btn-warning btn-sm"%>
+    <%= link_to "Download PDF", { :action => "show", :format => :pdf }, class: 'button nice red large radius', target: '_blank'%>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+<!-- <div class= "row">
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+    <%= render 'map', student: @student %>
+  </div>
+</div> -->

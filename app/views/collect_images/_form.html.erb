@@ -1,0 +1,28 @@
+<%= form_for(@collect_image , html: { class: "form-horizontal form-label-left"}) do |f| %>
+  <h4>Details</h4>
+  <span class="clearfix"></span>
+  <div class="ln_solid"></div>
+
+  <div class="form-group text-left">
+    <div>
+      <label class="control-label col-md-2 col-sm-2 col-xs-12">
+        Upload Image:
+      </label>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+        <%= f.file_field :image, multiple: true,class: "validate", data: {max_file_size: 5.megabytes} %>
+      </div>
+    </div>
+  </div>
+
+
+  <span class="clearfix"></span>
+
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
+      <a href="<%= collect_images_path %>" class="btn btn-warning", type="button">Cancel</a>
+      <button class="btn btn-primary" type="submit" data-disable-with="Saving...">Save</button>
+    </div>
+  </div>
+<% end %>
+

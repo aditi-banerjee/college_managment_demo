@@ -1,0 +1,26 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Student</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Student Details</h4>
+    <dl class="dl-horizontal" >
+      <dt>Exam Date:</dt><dd> <%= @exam_schedule.exam_date %> </dd>
+      <dt>Exam Start Time:</dt><dd> <%= @exam_schedule.exam_start_time.strftime('%R') %> </dd>
+      <dt>Exam End Time</dt><dd><%= @exam_schedule.exam_end_time.strftime('%R')%></dd>
+      <dt>Trade:</dt><dd> <%= @exam_schedule.try(:trade).try(:name) %> </dd>
+      <dt>Semester:</dt><dd> <%= @exam_schedule.semester %> </dd>
+    </dl>
+  </div>
+</div>
+<div class="col-md-6 text-right">
+    <%= link_to 'Edit', edit_exam_schedule_path(@exam_schedule) , class: "btn btn-warning btn-sm"%>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

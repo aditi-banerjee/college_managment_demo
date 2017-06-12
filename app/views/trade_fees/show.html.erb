@@ -1,0 +1,24 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Fees Structure</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Fee Structure Details</h4>
+    <dl class="dl-horizontal" >
+      <dt>Fee:</dt>         <dd><%= @trade_fee.try(:fee).try(:amount) %></dd>
+      <dt>Trade:</dt>             <dd><%= @trade_fee.try(:trade).try(:name)%></dd>
+    </dl>
+  </div>
+  <% if current_user.admin? %>
+    <div class="col-md-6 text-right">
+      <%= link_to 'Edit', edit_trade_fee_path(@trade_fee) , class: "btn btn-warning btn-sm"%>
+    </div>
+  <% end %>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

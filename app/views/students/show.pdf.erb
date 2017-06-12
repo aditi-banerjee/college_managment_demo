@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag('print', :media => :print) %>
+  </head>
+  <body onload='number_pages'>
+    <center>
+    <div id="content">
+      <div class="col-md-offset-4">
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td><%= "#{@student.first_name} #{@student.last_name}" %></td>
+              <td><%= wicked_pdf_image_tag @student.image.url(:thumb) unless @student.image.blank? %></td>
+            </tr>
+            <tr>
+              <td>Date of Birth:</td>
+              <td><%= @student.date_of_birth %></td>
+            </tr>
+            <tr>
+              <td>Gender:</td>
+              <td>
+                <% if @student.gender == 'M' %>
+                  Male
+                <% elsif @student.gender == 'F' %>
+                  Female
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><%= @student.email %></td>
+            </tr>
+            <tr>
+              <td>Mobile Number:</td>
+              <td><%= @student.mobile_no %></td>
+            </tr>
+            <tr>
+              <td>Cource:</td>
+              <td><%= @student.try(:trade).try(:name) %></td>
+            </tr>
+          </table>
+        </div>
+    </div>
+    </center>
+  </body>
+</html>

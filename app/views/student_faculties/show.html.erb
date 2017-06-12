@@ -1,0 +1,24 @@
+<div class="page-title">
+  <div class="title_left">
+    <h3>Faculty of Students</h3>
+  </div>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Student Of Respective Student </h4>
+    <dl class="dl-horizontal" >
+      <dt>Student:</dt>        <dd><%= @student_faculty.try(:student).try(:first_name) %></dd>
+      <dt>Faculty:</dt>         <dd><%= @student_faculty.try(:faculty).try(:first_name) %></dd>
+    </dl>
+  </div>
+  <% if current_user.admin? %>
+    <div class="col-md-6 text-right">
+      <%= link_to 'Edit', edit_student_faculty_path(@student_faculty) , class: "btn btn-warning btn-sm"%>
+    </div>
+  <% end %>
+</div>
+<span class="clearfix"></span>
+<div class="ln_solid"></div>

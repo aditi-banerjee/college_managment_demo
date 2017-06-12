@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1>Fees</h1>
+  </div>
+  <div class="col-md-2 new">
+    <% if current_user.is_admin? %>
+      <h1>
+        <%= link_to 'New Fee', new_fee_path, class: "btn btn-default btn-md" %>
+      </h1>
+    <% end %>
+  </div>
+  <div class="col-md-2 download">
+    <h1>
+      <%= form_tag fees_path, method: "get" do |f| %>
+        <div class="input-group">
+          <label class="control-label"><br /></label>
+          <a href="<%= export_file_export_files_path %>" class="btn btn-md btn-default">Fee excel</a>
+        </div>
+      <% end %>
+    </h1>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fees.each do |fee| %>
+      <tr>
+        <td><%= fee.duration %></td>
+        <td><%= fee.amount %></td>
+        <td class="text-right">
+          <%= link_to 'Show', fee, class: "btn btn-info btn-xs" %>
+          <% if current_user.admin? %>
+            <%= link_to 'Edit', edit_fee_path(fee), class: "btn btn-warning btn-xs" %>
+            <%= link_to 'Destroy', fee, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-xs"%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-right">
+  <%= paginate @fees %>
+</div>
+

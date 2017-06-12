@@ -1,0 +1,34 @@
+<%= form_for(@trade , html: { class: "form-horizontal form-label-left"}) do |f| %>
+  <h4>Trade Details</h4>
+  <span class="clearfix"></span>
+  <div class="ln_solid"></div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Name:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :name, placeholder: 'Name' , class: 'form-control col-md-7 col-xs-12' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Trade Duration:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :trade_duration, placeholder: 'Trade Duration' , class: 'form-control col-md-7 col-xs-12' %>
+    </div>
+  </div>
+
+  <span class="clearfix"></span>
+
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
+      <a href="<%= trades_path %>" class="btn btn-warning", type="button">Cancel</a>
+      <button class="btn btn-primary" type="submit" data-disable-with="Saving...">Save</button>
+    </div>
+  </div>
+<% end %>
+

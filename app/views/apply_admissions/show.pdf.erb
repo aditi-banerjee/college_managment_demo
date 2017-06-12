@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag('print', :media => :print) %>
+  </head>
+  <body onload='number_pages'>
+    <center>
+    <div id="content">
+      <div class="col-md-offset-4">
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td><%= "#{@apply_admission.first_name} #{@apply_admission.last_name}" %></td>
+              <td><%= wicked_pdf_image_tag @apply_admission.image.url(:thumb) unless @apply_admission.image.blank? %></td>
+            </tr>
+            <tr>
+              <td>Date of Birth:</td>
+              <td><%= @apply_admission.date_of_birth %></td>
+            </tr>
+            <tr>
+              <td>Gender:</td>
+              <td>
+                <% if @apply_admission.gender == 'M' %>
+                  Male
+                <% elsif @apply_admission.gender == 'F' %>
+                  Female
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><%= @apply_admission.email %></td>
+            </tr>
+            <tr>
+              <td>Mobile Number:</td>
+              <td><%= @apply_admission.contact_number %></td>
+            </tr>
+            <tr>
+              <td>Cource:</td>
+              <td><%= @apply_admission.try(:trade).try(:name) %></td>
+            </tr>
+          </table>
+        </div>
+    </div>
+    </center>
+  </body>
+</html>

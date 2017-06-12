@@ -1,0 +1,57 @@
+<div class="nested-fields">
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Title:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.text_field :title, placeholder: 'Title', required: :required, class: 'form-control col-md-7 col-xs-12' %>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <div>
+      <label class="control-label col-md-2 col-sm-2 col-xs-12">
+        Upload Certificate:
+      </label>
+      <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.file_field :certificate, data: {max_file_size: 5.megabytes},id:"certificate" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <div class="control-label col-md-2 col-sm-2 col-xs-12">
+      <%= link_to_remove_association "Remove Certificate", f, {class: "btn btn-danger" }%> 
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $("#certificate").on("change", function(){
+    var maxExceededMessage = "This file exceeds the maximum allowed file size (5 MB)";
+    var extErrorMessage = "Only file with extension: .pdf, .msword, .doc, .docx, .jpg, .jpeg, .gif, .png are allowed";
+    var allowedExtension = ["pdf", "msword","doc", "docx","jpg" ,"jpeg", "gif", "png"];
+
+    var extName;
+    var maxFileSize = $(this).data('max-file-size');
+    var sizeExceeded = false;
+    var extError = false;
+
+    $.each(this.files, function() {
+      if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {sizeExceeded=true;
+      };
+      extName = this.name.split('.').pop();
+      if ($.inArray(extName, allowedExtension) == -1) {
+        extError=true;
+      };
+    });
+    if (sizeExceeded) {
+      window.alert(maxExceededMessage);
+      $(this).val('');
+    };
+
+    if (extError) {
+      window.alert(extErrorMessage);
+      $(this).val('');
+    };
+  });
+</script>

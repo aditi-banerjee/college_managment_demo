@@ -1,0 +1,33 @@
+<%= form_for(@trade_fee , html: { class: "form-horizontal form-label-left"}) do |f| %>
+  <h4>Student Details</h4>
+  <span class="clearfix"></span>
+  <div class="ln_solid"></div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Trade:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12 dropdown" >
+    <%= f.select :trade_id , select_trade_data , {prompt: "---Select Trade---"}, required: :required , class: "form-control"%>
+    </div>
+  </div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Fees:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12 dropdown" >
+    <%= f.select :fee_id , select_fees_data , {prompt: "---Select Fees---"}, required: :required , class: "form-control"%>
+    </div>
+  </div>
+
+  <span class="clearfix"></span>
+
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
+      <a href="<%= trade_fees_path %>" class="btn btn-warning", type="button">Cancel</a>
+      <button class="btn btn-primary" type="submit" data-disable-with="Saving...">Save</button>
+    </div>
+  </div>
+<% end %>

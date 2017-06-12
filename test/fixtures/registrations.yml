@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trade_fees: 1
+  full_name: MyString
+  email: MyString
+  phone_no: MyString
+
+two:
+  trade_fees: 1
+  full_name: MyString
+  email: MyString
+  phone_no: MyString

@@ -1,0 +1,13 @@
+<h3>Users</h3>
+  <table class="table">
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <%= render user %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<div class="text-right">
+  <%= paginate @users %>
+</div>

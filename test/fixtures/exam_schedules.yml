@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exam_date: 2016-10-22
+  exam_time: 2016-10-22 10:57:58
+  trade_id: 1
+  semester: 1
+
+two:
+  exam_date: 2016-10-22
+  exam_time: 2016-10-22 10:57:58
+  trade_id: 1
+  semester: 1

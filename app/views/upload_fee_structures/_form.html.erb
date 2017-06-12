@@ -1,0 +1,25 @@
+<%= form_for(@upload_fee_structure , html: { class: "form-horizontal form-label-left"}) do |f| %>
+  <h4>Trade Details</h4>
+  <span class="clearfix"></span>
+  <div class="ln_solid"></div>
+
+  <div class="form-group text-left">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12">
+      Upload:
+    </label>
+    <div class="col-md-3 col-sm-3 col-xs-12">
+      <%= f.file_field :upload , class: 'form-control col-md-7 col-xs-12', required: :required %>
+    </div>
+  </div>
+
+  <span class="clearfix"></span>
+
+  <div class="ln_solid"></div>
+  <div class="form-group">
+    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
+      <a href="<%= upload_fee_structures_path %>" class="btn btn-warning", type="button">Cancel</a>
+      <button class="btn btn-primary" type="submit" data-disable-with="Saving...">Save</button>
+    </div>
+  </div>
+<% end %>
+

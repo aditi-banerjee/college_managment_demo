@@ -1,0 +1,12 @@
+<h1>My animals</h1>
+
+<ul>
+  <% @non_users.each do |non_user| %>
+    <li>
+      <strong>Name:</strong> <%= non_user.name %><br>
+      <strong>Age:</strong> <%= non_user.age %><br>
+      <strong>Address:</strong> <%= non_user.address %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Download archive', non_users_path(format: :zip) %>
